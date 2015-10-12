@@ -6,7 +6,7 @@
     <script type="text/javascript" charset="utf-8">
 
     // Wait for device API libraries to load
-
+$(function(){
     var watchID = null;
 
     // device APIs are available
@@ -24,6 +24,7 @@
         element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
                             'Longitude: ' + position.coords.longitude     + '<br />' +
                             '<hr />'      + element.innerHTML;
+        $.support.cors = true;
         $.post( "http://www.danielgranados.net/osm/putmarkert.php",{LAT:position.coords.latitude,LON:position.coords.longitude },function( data ) {
           $( ".result" ).html( data );
         });
@@ -35,7 +36,7 @@
             alert('code: '    + error.code    + '\n' +
                   'message: ' + error.message + '\n');
         }
-
+});
     </script>
   </head>
   <body>
