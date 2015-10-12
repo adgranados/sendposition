@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Device Properties Example</title>
+    <script src="js/jquery-1.11.3.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     // Wait for device API libraries to load
@@ -23,6 +24,9 @@
         element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
                             'Longitude: ' + position.coords.longitude     + '<br />' +
                             '<hr />'      + element.innerHTML;
+        $.post( "http://www.danielgranados.net/osm/putmarkert.php",{LAT:position.coords.latitude,LON:position.coords.longitude },function( data ) {
+          $( ".result" ).html( data );
+        });
     }
 
         // onError Callback receives a PositionError object
@@ -35,6 +39,7 @@
     </script>
   </head>
   <body>
+    <div class="result"></div>
     <p id="geolocation">Watching geolocation...</p>
   </body>
 </html>
