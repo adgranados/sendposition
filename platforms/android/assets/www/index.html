@@ -4,18 +4,18 @@
     <title>Device Properties Example</title>
         <script src="js/jquery-1.11.3.js"></script>
     <script type="text/javascript" charset="utf-8">
-
+ document.addEventListener('deviceready', onDeviceReady, false);
     // Wait for device API libraries to load
-$(function(){
+//$(function(){
         var watchID = null;
 
         // device APIs are available
         //
-        //function onDeviceReady() {
+        function onDeviceReady() {
             // Throw an error if no update is received every 30 seconds
             var options = { timeout: 30000 };
             watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
-        //}
+        }
 
         // onSuccess Geolocation
         //
@@ -45,7 +45,7 @@ $(function(){
             alert('code: '    + error.code    + '\n' +
                   'message: ' + error.message + '\n');
         }
-});
+//});
     </script>
   </head>
   <body>
